@@ -171,4 +171,6 @@ def stix():
 @app.route('/lab2/example')
 def example():
     name = 'Гритчин Георгий Эдуардович'
-    return render_template('example.html', name=name)
+    number = '2'
+    groupe = 'ФБИ-12, 3 курс'
+    return render_template('example.html', name=name, number=number, groupe=groupe)
