@@ -170,4 +170,5 @@ def stix():
 
 @app.route('/lab2/example')
 def example():
-    return render_template('example.html')
+    name = 'Гритчин Георгий Эдуардович'
+    return render_template('example.html', name=name)
