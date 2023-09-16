@@ -168,9 +168,18 @@ def stix():
 </html>
 '''
 
+# Роут второй лабораторной 
 @app.route('/lab2/example')
 def example():
     name = 'Гритчин Георгий Эдуардович'
     number = '2'
-    groupe = 'ФБИ-12, 3 курс'
-    return render_template('example.html', name=name, number=number, groupe=groupe)
+    groupe = 'ФБИ-12'
+    course = '3 курс'
+    fruits = [
+        {'name':'яблоки','price':'99₽'},
+        {'name':'груши','price':'139₽'},
+        {'name':'апельсины','price':'79₽'},
+        {'name':'мандарины','price':'259₽'},
+        {'name':'манго','price':'199₽'}
+        ]
+    return render_template('example.html', name=name, groupe=groupe,course=course, fruits=fruits)
