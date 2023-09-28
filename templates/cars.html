@@ -1,0 +1,19 @@
+
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 2 {% endblock %}
+
+{% block main %}
+<link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
+    <h1>Машины</h1>
+    <div>BMW 3 Первого поколения</div>
+    <img  src="../static/bmw3_first.png" alt="Фотография" width="250px" height="250px">
+    <div>BMW 3 Второго поколения</div>
+    <img  src="../static/bmw3_second.png" alt="Фотография" width="250px" height="250px">
+    <div>BMW 3 Третьего поколения</div>
+    <img  src="../static/bmw3_3.png" alt="Фотография" width="250px" height="250px">
+    <div>BMW 3 Четвертого поколения</div>
+    <img  src="../static/bmw3_4.png" alt="Фотография" width="250px" height="250px">
+    <div>BMW 3 Пятого поколения</div>
+    <img  src="../static/bmw3_5.png" alt="Фотография" width="250px" height="250px">
+{% endblock %}
