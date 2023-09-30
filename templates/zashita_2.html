@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 2 {% endblock %}
+
+{% block main %}
+    <div>Задание №1</div>
+    {% for f in letters %}
+    <li>{{ f.A }}</li>
+    <li>{{ f.B }}</li>
+    <li>{{ f.C }}</li>
+    {% endfor %}
+
+    <div>Задание №2</div>
+    {{result}}
+
+    <div>Задание №3</div>
+    {{result_2}}
+
+{% endblock %}

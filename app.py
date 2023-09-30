@@ -29,7 +29,7 @@ def menu():
                     <a href="http://127.0.0.1:5000/lab1" target="_blank">Лабораторная работа №1</a>
                 </li>
                 <li>
-                    <a href="http://127.0.0.1:5000/lab2" target="_blank">Лабораторная работа №1</a>
+                    <a href="http://127.0.0.1:5000/lab2" target="_blank">Лабораторная работа №2</a>
                 </li>
             </ol>
         </main>
@@ -199,12 +199,42 @@ def example():
     ]
     return render_template('example.html', name=name, number=number, groupe=groupe,course=course, fruits=fruits, books=books)
 
+#Ссылка на вторую лабораторную
 @app.route('/lab2/')
 def lab2():
     return render_template('lab2.html')
 
+#Ссылка на самостоятельное задание
 @app.route('/lab2/cars')
 def cars():
-    number = '2'
-    return render_template('cars.html', number=number)
+    return render_template('cars.html')
+
+#ЗАЩИТА ЛАБОРАТОРНОЙ №2
+@app.route('/lab2/zashita_2')
+def zashita_2():
+    #Задание №1
+    A, B, C = 8, 10, 12
+
+    if A<B<C:
+        A=A*2
+        B=B*2
+        C=C*2
+    #Задание №2
+        N = 6
+        K = 100
+        result = str(N) * K 
+    #Задание №3
+        G = 2
+        Q = 4
+        result_2 = 0
+        for i in range(1, G+1):
+            result_2 += i**Q
+
+        letters = [
+        {'A': A,'B': B, 'C': C },
+    ]
+    return render_template('zashita_2.html', letters = letters, N=N, K=K,  result = result, result_2 = result_2)
+
+   
+    
     
