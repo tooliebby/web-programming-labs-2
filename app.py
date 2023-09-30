@@ -28,6 +28,9 @@ def menu():
                 <li>
                     <a href="http://127.0.0.1:5000/lab1" target="_blank">Лабораторная работа №1</a>
                 </li>
+                <li>
+                    <a href="http://127.0.0.1:5000/lab2" target="_blank">Лабораторная работа №1</a>
+                </li>
             </ol>
         </main>
 
@@ -194,8 +197,14 @@ def example():
         {'name': 'Самый богаты человек в вавилоне', 'name_author': 'Джордж Оруэлл', 'zanr': 'Антиутопия', 'kol_stranits': '156'},
         {'name': 'Анна Каренина', 'name_author': 'Лев Толстой', 'zanr': 'Роман', 'kol_stranits': '864'}
     ]
-    return render_template('example.html', name=name, groupe=groupe,course=course, fruits=fruits, books=books)
+    return render_template('example.html', name=name, number=number, groupe=groupe,course=course, fruits=fruits, books=books)
 
 @app.route('/lab2/')
 def lab2():
     return render_template('lab2.html')
+
+@app.route('/lab2/cars')
+def cars():
+    number = '2'
+    return render_template('cars.html', number=number)
+    
