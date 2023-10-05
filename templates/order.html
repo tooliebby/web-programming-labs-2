@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 3 {% endblock %}
+
+{% block main %}
+    <h1 class="naming_order">Заказ напитка</h1>
+    <form action="/lab3/pay">
+        <div class="naming_order">Напиток</div>
+        <ul>
+            <li>
+                <label>
+                    <input type="radio" value="coffe" name="drink" checked>Кофе: 120 рублей.
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" value="black-tea" name="drink" checked>Черный чай: 80 рублей.
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="radio" value="green-tea" name="drink" checked>Зеленый чай: 70 рублей.
+                </label>
+             </li>
+         </ul>
+
+        <div class="naming_order">Добавки</div>
+        <ul>
+            <li>
+                <label>
+                    <input type="checkbox" name="milk" checked>молоко
+                </label>
+            </li>
+            <li>
+                <label>
+                    <input type="checkbox" name="sugar" checked>сахар
+                </label>
+            </li>
+         </ul>
+
+        <div>
+            <button type="submit" class="button_order">Заказать</button>
+        </div>
+    </form>
+{% endblock %}
