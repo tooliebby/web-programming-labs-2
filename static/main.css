@@ -27,3 +27,8 @@ footer{
     left: 0;
     right: 0;
 }
+
+.errors{
+    color: rgb(198, 11, 11);
+    font-weight: bold;
+}
