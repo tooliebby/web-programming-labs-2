@@ -31,6 +31,9 @@ footer{
 .errors{
     color: rgb(198, 11, 11);
     font-weight: bold;
+    font-family: "Normalidad Text", "Helvetica Neue", sans-serif;
+    font-size: 15px;
+    line-height: 1.4;
 }
 
 .naming_order{
