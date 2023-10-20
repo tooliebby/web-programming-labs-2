@@ -5,6 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{url_for('static', filename='main.css')}}">
     <title>Гритчин Георгий. {% block lab %}{% endblock %}</title>
+    {% if request.cookies.get('color') %}
+    <style>
+        body{
+            color: {{ request.cookies.get('color') }};
+            background: {{ request.cookies.get('background') }}
+        }
+    </style>
+    {% endif %}
 </head>
 <body>
     <header>
