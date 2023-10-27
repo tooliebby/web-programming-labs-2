@@ -121,15 +121,63 @@ def corn1():
         return render_template('success_corn.html', weight=weight, money=money, discount=discount,corn=corn)
     return render_template('success_corn.html', corn=corn, weight=weight)
 
-#Задание - Куки
+# #Задание - Куки 
+# @lab4.route('/lab4/cookies',methods = ['GET', 'POST'])
+# def cookies():
+#     if request.method == 'GET':
+#         return render_template('cookies.html')
+    
+#     color = request.form.get('color')
+#     headers = {
+#         'Set-Cookie' : 'color=' + color + '; path=/',
+#         'Location' : '/lab4/cookies'
+#     }
+#     return '', 303, headers
+
+# #Задание - Фон и размер текста (Фон)
+# @lab4.route('/lab4/cookies',methods = ['GET', 'POST'])
+# def cookies1():
+#     if request.method == 'GET':
+#         return render_template('cookies.html')
+    
+#     background = request.form.get('background')
+#     headers = {
+#         'Set-Cookie' : 'background=' + background + '; path=/',
+#         'Location' : '/lab4/cookies'
+#     }
+#     return '', 303, headers
+    
+# #Задание - Фон и размер текста (Размер текста)
+# @lab4.route('/lab4/cookies',methods = ['GET', 'POST'])
+# def cookies2():
+#     if request.method == 'GET':
+#         return render_template('cookies.html')
+    
+#     font_size = request.form.get('font-size')
+#     headers = {
+#         'Set-Cookie' : 'font-size=' + font_size + '; path=/',
+#         'Location' : '/lab4/cookies'
+#     }
+#     return '', 303, headers
+
 @lab4.route('/lab4/cookies',methods = ['GET', 'POST'])
 def cookies():
     if request.method == 'GET':
         return render_template('cookies.html')
     
     color = request.form.get('color')
-    headers = {
-        'Set-Cookie' : 'color=' + color + '; path=/',
-        'Location' : '/lab4/cookies'
-    }
+    background = request.form.get('background')
+    font_size = request.form.get('font-size')
+    
+    headers = {}
+    
+    if color:
+        headers['Set-Cookie'] = 'color=' + color + '; path=/'
+    if background:
+        headers['Set-Cookie'] = 'background=' + background + '; path=/'
+    if font_size:
+        headers['Set-Cookie'] = 'font-size=' + font_size + '; path=/'
+    
+    headers['Location'] = '/lab4/cookies'
+    
     return '', 303, headers
