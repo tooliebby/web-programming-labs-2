@@ -3,26 +3,48 @@ import psycopg2
 
 lab5 = Blueprint('lab5', __name__)
 
-@lab5.route ("/lab5")
-def main():
-    # Прописываем параметры подключения к БД
-    conn = psycopg2. connect(
+def dbConnect ():
+    conn = psycopg2.connect (
         host="127.0.0.1",
-        database="knowledge_base_for_gritchin_georgiy",
+        database="knowledge_base_for_gritchin_georgiy", 
         user="gritchin_georgiy_knowledge_base",
         password="0407")
 
-    # Получаем курсор. С помощью него мы можем выполнять SQL-запросы
-    cur = conn.cursor()
+    return conn
 
-    # Пишем запрос, который psycog2 должен выполнить
+def dbClose (cursor, connection):
+    # Закрываем курсор и соединение
+    # Порядок важен!
+    cursor. close ()
+    connection.close ()
+
+@lab5.route ("/lab5")
+def main ():
+    conn = dbConnect ()
+    cur = conn.cursor ()
+
     cur.execute ("SELECT * FROM users;")
-    # fetchall получить все строки, которые получились результате
-    # выполнения SOL-запроса в execute
-    # Сохраняем эти строки в переменную result
-    result = cur.fetchall ()
-    # Закрываем соединение с БД
-    cur.close ()
-    conn.close ()
-    print(result)
+
+    result = cur. fetchall ()
+
+    print (result)
+
+    # Не забывайте закрывать соединение
+    dbClose (cur, conn)
     return "go to console"
+
+#Вывод имен пользователей таблицы "Users"
+@lab5.route ("/lab5/users")
+def users ():
+    conn = dbConnect ()
+    cur = conn.cursor ()
+
+    cur.execute ("SELECT username FROM users;")
+
+    result = cur. fetchall ()
+
+    print (result)
+
+    # Не забывайте закрывать соединение
+    dbClose (cur, conn)
+    return result
