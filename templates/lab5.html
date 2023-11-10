@@ -3,11 +3,20 @@
 {% block lab %} Лабораторная работа 5 {% endblock %}
 
 {% block main %}
-    <h1>Формы (POST)</h1>
-    <div>Тема лабораторной - Формы (POST). Список сделанных страниц:</div>
-    <ol>
+    <h1>База знаний</h1>
+    <ol class="hr">
         <li>
-            <a href="/lab5/users">Форма авторизации</a>
+            <a href ="/lab5 " target="_blank">Просмотреть заметки</a>
         </li>
+        <li>
+            <a href="/lab5" target="_blank">Создать заметку</a>
+        </li>
+        <li>
+            <a href="/lab5/login" target="_blank">Логин</a>
+        </li>
+        <li>
+            <a href="/lab5/register" target="_blank">Регистрация</a>
+        </li>
+        {{ username }}
     </ol>
 {% endblock %}
