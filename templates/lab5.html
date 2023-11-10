@@ -6,7 +6,7 @@
     <h1>База знаний</h1>
     <ol class="hr">
         <li>
-            <a href ="/lab5/articles" target="_blank">Просмотреть заметки</a>
+            <a href ="/lab5/spisok_article" target="_blank">Просмотреть заметки</a>
         </li>
         <li>
             <a href="/lab5/new_article" target="_blank">Создать заметку</a>
@@ -18,5 +18,10 @@
             <a href="/lab5/register" target="_blank">Регистрация</a>
         </li>
         {{ username }}
+        <form action="/lab5/logout">
+            <input type="submit" value="Logout" />
+        </form>
+         
+        
     </ol>
 {% endblock %}

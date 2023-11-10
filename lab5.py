@@ -21,7 +21,11 @@ def dbClose (cursor, connection):
 #Роут Главной страницы
 @lab5.route('/lab5')
 def lab():
-    visibleUser = "Anon"
+    username=session.get("username")
+    if username =='':
+        visibleUser= "ANON"
+    else:
+        visibleUser=username
     return render_template('lab5.html', username=visibleUser)
 
 
@@ -68,7 +72,7 @@ def registerPage():
     if cur.fetchone() is not None:
         errors='Пользователь с данным именем уже существует'
         dbClose(cur, conn)
-        return render_template("regiSter.html", errors=errors)
+        return render_template("register.html", errors=errors)
     
     cur.execute(f"INSERT INTO users (username, password) VALUES ('{username}','{hashPassword}');")
 
@@ -158,7 +162,7 @@ def getArticles(article_id = '3'):
         conn = dbConnect()
         cur = conn.cursor()
 
-        cur. execute ("SELECT title, article_text FROM articles WHERE id = %s and user_id = %s")
+        cur. execute ("SELECT title, article_text FROM articles WHERE id = %s and user_id = %s", (article_id, userID))
         # Возьми одну строку
         articleBody = cur. fetchone ()
         dbClose (cur, conn)
@@ -168,3 +172,34 @@ def getArticles(article_id = '3'):
         # с помощью цикла f в ііпіа разбить статью на параграфы
         text = articleBody [1].splitlines ()
         return render_template ("articles.html", article_text=text, article_title=articleBody [0], username=session.get ("username"))
+    
+#Роут разлогирования
+@lab5.route("/lab5/logout")
+def logOut():
+
+    session.clear()
+    return render_template('login.html')
+
+#Роут для просмотра списка заметок
+@lab5.route("/lab5/spisok_article")
+def spisokArticle(article_id = '3'):
+    userID = session.get("id")
+    
+    username=session.get("username")
+    if username =='':
+        visibleUser='Anon'
+    else:
+        visibleUser=username
+    conn = dbConnect ()
+    cur = conn.cursor ()
+
+    cur. execute ("SELECT title, article_text FROM articles WHERE id = %s and user_id = %s", (article_id, userID))
+    result = cur. fetchall ()
+
+    # Не забывайте закрывать соединение
+    dbClose (cur, conn)
+
+    title = ""
+    for row in result:
+            title += f"{row[0]}\n"
+    return render_template('spisok_article.html',title=title, username=visibleUser)
