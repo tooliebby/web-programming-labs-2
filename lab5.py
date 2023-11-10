@@ -139,7 +139,7 @@ def createArticle():
             conn = dbConnect()
             cur = conn.cursor()
 
-            cur.execute(f"INSERT INTO articles(user_id, title, article_text) VALUES ('{userID}', '{title}', '{text_article}') RETURNING id")
+            cur.execute(f"INSERT INTO articles(user_id, title, article_text) VALUES ({userID}, '{title}', '{text_article}') RETURNING id")
             new_article_id = cur.fetchone()[0]
             conn.commit()
 
@@ -148,3 +148,23 @@ def createArticle():
             return redirect(f"/lab5/articles/{new_article_id}")
         
     return redirect("/lab5/login")
+
+#Роут для просмотра заметок
+@lab5.route("/lab5/articles/<int:article_id>")
+def getArticles(article_id = '3'):
+    userID = session.get("id")
+    
+    if userID is not None:
+        conn = dbConnect()
+        cur = conn.cursor()
+
+        cur. execute ("SELECT title, article_text FROM articles WHERE id = %s and user_id = %s")
+        # Возьми одну строку
+        articleBody = cur. fetchone ()
+        dbClose (cur, conn)
+        if articleBody is None:
+            return "Not found!"
+        # Разбиваем строку на массив по "Enter", чтобы
+        # с помощью цикла f в ііпіа разбить статью на параграфы
+        text = articleBody [1].splitlines ()
+        return render_template ("articles.html", article_text=text, article_title=articleBody [0], username=session.get ("username"))
