@@ -111,7 +111,7 @@ def zashita2():
     else:
         result2 = -1
     print(f"xxxxxx {result2}") 
-    return render_template('zashita3.html', result2 = result2, N=N, X=X)
+    return render_template('zashita/zashita3.html', result2 = result2, N=N, X=X)
 
 @lab3.route('/lab3/zashita')
 def zashita():
@@ -131,5 +131,5 @@ def zashita():
         result = 2
     else:
         result = 1
-    return render_template('zashita3.html', result = result, A = A, B=B, C=C, D=D)
+    return render_template('zashita/zashita3.html', result = result, A = A, B=B, C=C, D=D)
 

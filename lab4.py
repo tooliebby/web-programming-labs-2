@@ -11,7 +11,7 @@ def lab():
 @lab4.route('/lab4/login', methods = ['GET','POST'])
 def login():
     if request.method == 'GET':
-        return render_template("login.html")
+        return render_template("loginlab4.html")
     
     #Получение введенных значений 
     username = request.form.get('username')
@@ -20,10 +20,10 @@ def login():
     # Проверка на пустой логин и пароль
     if not username:
         error = 'Не введен логин'
-        return render_template('login.html', error=error)
+        return render_template('loginlab4.html', error=error)
     elif not password:
         error = 'Не введен пароль'
-        return render_template('login.html', error=error)
+        return render_template('loginlab4.html', error=error)
 
     #Если данные введены корректно 
     if username == 'alex' and password == '123':
@@ -31,7 +31,7 @@ def login():
     #Если данные введены некорректно 
     else:
         error = 'Неверный логин и/или пароль'
-        return render_template('login.html', error=error, username=username, password=password)
+        return render_template('loginlab4.html', error=error, username=username, password=password)
     
 #Задание - Холодильник
 @lab4.route('/lab4/fridge',methods = ['GET','POST'])

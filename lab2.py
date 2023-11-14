@@ -66,4 +66,4 @@ def zashita_2():
         letters = [
         {'A': A,'B': B, 'C': C },
     ]
-    return render_template('zashita_2.html', letters = letters, N=N, K=K,  result = result, result_2 = result_2)
+    return render_template('zashita/zashita_2.html', letters = letters, N=N, K=K,  result = result, result_2 = result_2)
