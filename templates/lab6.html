@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block lab %} Лабораторная работа 6 {% endblock %}
+
+{% block main %}
+    <h1>База знаний</h1>
+    <ol class="hr">
+        <li>
+            <a href ="/lab6/articles" target="_blank">Просмотреть заметки</a>
+        </li>
+        <li>
+            <a href="/lab6/articles/add" target="_blank">Создать заметку</a>
+        </li>
+        <li>
+            <a href="/lab6/login" target="_blank">Логин</a>
+        </li>
+        <li>
+            <a href="/lab6/register" target="_blank">Регистрация</a>
+        </li>
+        {{ username }}
+        <form action="/lab6/logout">
+            <input type="submit" value="Logout" />
+        </form>
+         
+        
+    </ol>
+{% endblock %}
