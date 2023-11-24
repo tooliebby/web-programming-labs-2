@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, make_response, redirect, 
 from Db import db
 from Db.models import users, articles
 from werkzeug.security import check_password_hash, generate_password_hash
-from flask_login import login_user, login_required, current_user
+from flask_login import login_user, login_required, current_user, logout_user
 
 lab6 = Blueprint('lab6', __name__)
 
@@ -99,21 +99,23 @@ def login():
 @lab6.route("/lab6/articles")
 @login_required
 def articles_list():
-    my_articles = articles.query.filter_by(user_id=int(current_user.id)).all()
-    return render_template("spisok_article.html", articles_list=my_articles)  
+    my_articles = articles.query.filter_by(user_id=current_user.id).all()
+    return render_template('spisok_article.html',articles=my_articles)
 
-@lab6.route('/lab6/articles/<int:article_id>')
-@login_required
-def view_article(article_id):
-    article = articles.query.get(article_id)
-    return render_template('spisok_article.html', article=article)
+@lab6.route("/lab6/articles/<int:article_id>")
+def get_article(article_id):
+    article = articles.query.filter_by(id=article_id).first()
+    if article is None:
+        return "Not found!"
+    text = article.article_text.splitlines()
+    return render_template("articles.html", article_text=text, article_title=article.title)
 
 #Роут для разлогинизации 
 @lab6.route("/lab6/logout")
 @login_required
 def logout():
     logout_user()
-    return redirect("/lab6/login")   
+    return redirect("/lab6")   
 
 #Роут для  создания новых заметок
 @lab6.route('/lab6/articles/add', methods=['GET', 'POST'])
@@ -125,5 +127,5 @@ def add_article():
         new_article = articles(title=title_article, article_text=text_article, user_id=current_user.id)
         db.session.add(new_article)
         db.session.commit()
-        return redirect('/lab6/articles')
+        return redirect(f"/lab6/articles/{new_article.id}")
     return render_template('new_article.html')     
