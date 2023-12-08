@@ -45,6 +45,9 @@ def menu():
                 <li>
                     <a href="http://127.0.0.1:5000/lab6" target="_blank">Лабораторная работа №6</a>
                 </li>
+                <li>
+                    <a href="http://127.0.0.1:5000/lab7" target="_blank">Лабораторная работа №7</a>
+                </li>
             </ol>
         </main>
 
