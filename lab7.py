@@ -57,3 +57,8 @@ def pay(params):
     price=calculate_price(params)
     return{"result": "success", "message": f"С карты {card_num} списано {price} руб", "error": None}
 
+#Функция возврата
+def refund(params):
+    card_num = params['card_num']
+    price = calculate_price(params)
+    return {"result":f'Деньги возвращены на карту {card_num} в сумме {price}','error': None}
