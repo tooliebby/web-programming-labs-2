@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block lab %}Защита экзамена WEB-программирование{% endblock %}
+
+{% block main %}
+
+<form action="/result" method="post">
+    <label for="x">x:</label>
+    <input type="text" name="x"><br><br>
+    <label for="y">y:</label>
+    <input type="text" name="y"><br><br>
+    <label for="z">z:</label>
+    <input type="text" name="z"><br><br>
+    <input type="submit" value="ok">
+</form>
+{%endblock%}

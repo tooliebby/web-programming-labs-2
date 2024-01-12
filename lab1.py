@@ -48,8 +48,13 @@ def menu():
                 <li>
                     <a href="http://127.0.0.1:5000/lab7" target="_blank">Лабораторная работа №7</a>
                 </li>
-                                <li>
+                <li>
+                
                     <a href="http://127.0.0.1:5000/lab8" target="_blank">Лабораторная работа №8</a>
+                </li>
+                <li>
+                
+                    <a href="http://127.0.0.1:5000/lab10" target="_blank">Защита экзамена</a>
                 </li>
             </ol>
         </main>
